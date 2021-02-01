@@ -3,11 +3,14 @@
 namespace n2305WindowAd\Models;
 
 use DateTimeImmutable;
+use DateTimeInterface;
 use Shopware\Components\Model\ModelEntity;
 use Shopware\Models\Article\Detail;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 use Shopware\Models\ProductStream\ProductStream;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="WindowAdRepo")
@@ -28,6 +31,7 @@ class WindowAd extends ModelEntity
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="url_slug", type="string", nullable=false, unique=true)
      */
     private $urlSlug;
@@ -35,29 +39,40 @@ class WindowAd extends ModelEntity
     /**
      * @var string
      *
+     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", nullable=false)
      */
     private $title;
 
     /**
+     * @var
+     *
+     * @ORM\Column(name="product_stream_id", type="integer")
+     */
+    protected $productStreamId;
+
+    /**
      * @var ProductStream
      *
+     * @Assert\NotBlank()
+     * @Assert\Valid()
+     *
      * @ORM\ManyToOne(targetEntity="Shopware\Models\ProductStream\ProductStream")
-     * @ORM\JoinColumn(name="product_stream_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\JoinColumn(name="product_stream_id", referencedColumnName="id", onDelete="CASCADE", nullable=false)
      */
     private $productStream;
 
     /**
      * @var DateTimeImmutable
      *
-     * @ORM\Column(name="created_at", type="datetimetz_immutable", nullable=false)
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
     /**
      * @var DateTimeImmutable
      *
-     * @ORM\Column(name="updated_at", type="datetimetz_immutable", nullable=true)
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -106,24 +121,31 @@ class WindowAd extends ModelEntity
         return $this;
     }
 
-    public function getProductStream(): ProductStream
+    /**
+     * @return ProductStream
+     */
+    public function getProductStream()
     {
         return $this->productStream;
     }
 
-    public function setProductStream(ProductStream $productStream): self
+    /**
+     * @param ProductStream $productStream
+     * @return $this
+     */
+    public function setProductStream($productStream): self
     {
         $this->productStream = $productStream;
 
         return $this;
     }
 
-    public function getCreatedAt(): DateTimeImmutable
+    public function getCreatedAt(): DateTimeInterface
     {
         return $this->createdAt;
     }
 
-    public function getUpdatedAt(): DateTimeImmutable
+    public function getUpdatedAt(): DateTimeInterface
     {
         return $this->updatedAt;
     }

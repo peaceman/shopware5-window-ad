@@ -4,13 +4,13 @@
 
     <entries>
         <entry>
-            <name>SwagBasicProduct</name>
-            <label lang="en">Swag basic product</label>
-            <label lang="de">Swag Basis Produkt</label>
-            <controller>SwagProductBasic</controller>
+            <name>n2305WindowAd</name>
+            <label lang="en">n2305 WindowAd</label>
+            <label lang="de">n2305 WindowAd</label>
+            <controller>n2305WindowAd</controller>
             <action>index</action>
             <class>sprite-application-block</class>
-            <parent identifiedBy="controller">Article</parent>
+            <parent identifiedBy="controller">Content</parent>
         </entry>
     </entries>
 </menu>
