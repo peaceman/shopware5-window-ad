@@ -1,0 +1,15 @@
+{
+    "name": "n2305/windowad",
+    "type": "shopware-plugin",
+    "description": "WindowAd",
+    "version": "v1.0.0",
+    "license": "proprietary",
+    "require": {
+
+    },
+    "autoload": {
+        "psr-4": {
+
+        }
+    }
+}
