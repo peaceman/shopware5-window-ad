@@ -28,6 +28,8 @@ class Shopware_Controllers_Frontend_WindowAd extends Enlight_Controller_Action
             'articles' => $convertedProducts,
             'sliderAutoSlide' => 'true',
             'sliderItemMinWidth' => '640',
+            'sliderArrowControls' => 'false',
+            'sliderAutoSlideSpeed' => 10,
             'windowAd' => ['title' => $windowAd->getTitle()],
         ]);
     }
