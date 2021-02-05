@@ -26,7 +26,7 @@ class Shopware_Controllers_Frontend_WindowAd extends Enlight_Controller_Action
         $this->View()->assign([
             'sArticles' => $convertedProducts,
             'articles' => $convertedProducts,
-            'sliderAutoScroll' => 'true',
+            'sliderAutoSlide' => 'true',
             'sliderItemMinWidth' => '640',
             'windowAd' => ['title' => $windowAd->getTitle()],
         ]);

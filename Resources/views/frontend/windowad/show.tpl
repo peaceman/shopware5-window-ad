@@ -1,41 +1,55 @@
 {extends file='parent:frontend/index/index.tpl'}
 
-
 {block name="frontend_index_page_wrap"}
-    <div class="wad-fullscreen">
-        <div style="">
-            {* Title *}
-            {block name="widget_emotion_component_product_slider_title"}
-                {if $windowAd.title}
-                    <div class="panel--title is--underline product-slider--title">
-                        {$windowAd.title}
-                    </div>
-                {/if}
+    {block name="windowad_styles"}
+        <style type="text/css">
+            .windowad-fullscreen {
+                display: flex;
+                flex-direction: column;
+                height: 100vh;
+            }
+
+            .windowad-fullscreen-slider {
+                flex-grow: 1;
+            }
+
+            .windowad-fullscreen-slider > .product-slider,
+            .windowad-fullscreen-slider .product--box,
+            .windowad-fullscreen-slider .product--info {
+                height: 100%;
+            }
+
+            .windowad-fullscreen-slider .product--image {
+                height: 75%;
+            }
+
+            .windowad-fullscreen-slider .product--image .image--element img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        </style>
+    {/block}
+
+    {block name="windowad_page_wrap"}
+        <div class="windowad-fullscreen">
+            {block name="windowad_title_container"}
+                {* Title *}
+                {block name="widget_emotion_component_product_slider_title"}
+                    {if $windowAd.title}
+                        <h2 style="text-align: center">{$windowAd.title}</h2>
+                    {/if}
+                {/block}
+            {/block}
+
+            {block name="windowad_slider_container"}
+                {* Slider *}
+                <div class="windowad-fullscreen-slider">
+                    {include file='frontend/_includes/product_slider.tpl'}
+                </div>
             {/block}
         </div>
-
-        {* Slider *}
-        <div class="wad-fullscreen-slider">
-            {include file='frontend/_includes/product_slider.tpl'}
-        </div>
-    </div>
-
-    <style type="text/css">
-        .wad-fullscreen {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-        }
-
-        .wad-fullscreen-slider {
-            flex-grow: 1;
-        }
-
-        .wad-fullscreen-slider > .product-slider {
-            height: 100%;
-        }
-    </style>
-
+    {/block}
 {/block}
 {block name='frontend_index_cookie_permission'}
 {/block}
