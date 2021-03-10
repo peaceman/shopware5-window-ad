@@ -1,5 +1,15 @@
 {extends file='parent:frontend/index/index.tpl'}
 
+{* use the largest available thumbnail for the slider *}
+{block name='frontend_listing_box_article_image_picture_element'}
+    {assign var=bigThumb value=($sArticle.image.thumbnails|@end)}
+
+    <img src="{$bigThumb.sourceSet}"
+         alt="{$desc}"
+         data-extension="{$sArticle.image.extension}"
+         title="{$desc|truncate:160}" />
+{/block}
+
 {block name="frontend_index_page_wrap"}
     {block name="windowad_styles"}
         <style type="text/css">
