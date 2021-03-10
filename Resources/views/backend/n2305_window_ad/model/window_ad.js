@@ -13,6 +13,7 @@ Ext.define('Shopware.apps.n2305WindowAd.model.WindowAd', {
         { name : 'title', type: 'string' },
         { name : 'urlSlug', type: 'string' },
         { name: 'productStreamId', type: 'int', },
+        { name: 'sliderItemMinWidth', type: 'int', },
         { name : 'createdAt', type: 'datetime' },
     ],
 

@@ -12,6 +12,7 @@ Ext.define('Shopware.apps.n2305WindowAd.view.detail.WindowAd', {
                         title: {},
                         urlSlug: {},
                         productStreamId: {},
+                        sliderItemMinWidth: {},
                     }
                 },
             ],

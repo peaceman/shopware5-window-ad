@@ -45,7 +45,14 @@ class WindowAd extends ModelEntity
     private $title;
 
     /**
-     * @var
+     * @var int
+     *
+     * @ORM\Column(name="slider_item_min_width", type="integer", options={"default": 640})
+     */
+    private $sliderItemMinWidth;
+
+    /**
+     * @var int
      *
      * @ORM\Column(name="product_stream_id", type="integer")
      */
@@ -117,6 +124,18 @@ class WindowAd extends ModelEntity
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSliderItemMinWidth(): int
+    {
+        return $this->sliderItemMinWidth;
+    }
+
+    public function setSliderItemMinWidth(int $sliderItemMinWidth): self
+    {
+        $this->sliderItemMinWidth = $sliderItemMinWidth;
 
         return $this;
     }
