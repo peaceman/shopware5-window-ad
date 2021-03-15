@@ -46,6 +46,18 @@
                 margin-top: 1.75rem;
                 margin-bottom: 0.625rem;
             }
+
+            @media (orientation: portrait) {
+                html {
+                    font-size: 2vh;
+                }
+            }
+
+            @media (orientation: landscape) {
+                html {
+                    font-size: 2vw;
+                }
+            }
         </style>
     {/block}
 
