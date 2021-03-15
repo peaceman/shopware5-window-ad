@@ -2,12 +2,23 @@
 
 {* use the largest available thumbnail for the slider *}
 {block name='frontend_listing_box_article_image_picture_element'}
-    {assign var=bigThumb value=($sArticle.image.thumbnails|@end)}
+    {$srcSet = ''}
+    {$srcSetRetina = ''}
 
-    <img src="{$bigThumb.sourceSet}"
-         alt="{$desc}"
-         data-extension="{$sArticle.image.extension}"
-         title="{$desc|truncate:160}" />
+    {foreach $sArticle.image.thumbnails as $image}
+        {$srcSet = "{if $srcSet}{$srcSet}, {/if}{$image.source} {$image.maxWidth}w"}
+
+        {if $image.retinaSource}
+            {$srcSetRetina = "{if $srcSetRetina}{$srcSetRetina}, {/if}{$image.retinaSource} {$image.maxWidth * 2}w"}
+        {/if}
+    {/foreach}
+
+    <picture>
+        <source sizes="{$sliderItemMinWidth}px" srcset="{$srcSetRetina}" media="(min-resolution: 192dpi)" />
+        <source sizes="{$sliderItemMinWidth}px" srcset="{$srcSet}" />
+
+        <img src="{$sArticle.image.thumbnails[0].source}" alt="{$desc|strip_tags|truncate:160}" />
+    </picture>
 {/block}
 
 {block name="frontend_index_page_wrap"}

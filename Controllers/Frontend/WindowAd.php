@@ -23,14 +23,6 @@ class Shopware_Controllers_Frontend_WindowAd extends Enlight_Controller_Action
         $convertedProducts = $this->container->get('legacy_struct_converter')
             ->convertListProductStructList($products->getProducts());
 
-        // sort thumbnails by size
-        foreach ($convertedProducts as &$cp) {
-            $thumbs = &$cp['image']['thumbnails'];
-            $maxWidths = array_column($thumbs, 'maxWidth');
-
-            array_multisort($maxWidths, SORT_ASC | SORT_NUMERIC, $thumbs);
-        }
-
         $this->View()->assign([
             'sArticles' => $convertedProducts,
             'articles' => $convertedProducts,
