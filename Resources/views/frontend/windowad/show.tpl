@@ -62,7 +62,7 @@
             }
 
             .windowad-fullscreen-title picture > img {
-                width: 5rem;
+                width: 10rem;
             }
 
             @media (orientation: portrait) {
