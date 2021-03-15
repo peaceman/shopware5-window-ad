@@ -39,7 +39,6 @@ class WindowAd extends ModelEntity
     /**
      * @var string
      *
-     * @Assert\NotBlank()
      * @ORM\Column(name="title", type="string", nullable=false)
      */
     private $title;

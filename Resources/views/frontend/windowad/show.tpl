@@ -38,18 +38,31 @@
                 height: 100%;
                 object-fit: contain;
             }
+
+            .windowad-fullscreen-title > * {
+                width: fit-content;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 1.75rem;
+                margin-bottom: 0.625rem;
+            }
         </style>
     {/block}
 
     {block name="windowad_page_wrap"}
         <div class="windowad-fullscreen">
             {block name="windowad_title_container"}
-                {* Title *}
-                {block name="widget_emotion_component_product_slider_title"}
-                    {if $windowAd.title}
-                        <h2 style="text-align: center">{$windowAd.title}</h2>
-                    {/if}
-                {/block}
+                <div class="windowad-fullscreen-title">
+                    <div>
+                        {block name="widget_emotion_component_product_slider_title"}
+                            {if $windowAd.title}
+                                <h2>{$windowAd.title}</h2>
+                            {else}
+                                {include file='frontend/index/logo-container.tpl'}
+                            {/if}
+                        {/block}
+                    </div>
+                </div>
             {/block}
 
             {block name="windowad_slider_container"}
@@ -61,6 +74,13 @@
         </div>
     {/block}
 {/block}
+
 {block name='frontend_index_cookie_permission'}
 {/block}
 
+{* Support Info *}
+{block name='frontend_index_logo_supportinfo'}
+{/block}
+
+{* Trusted Shops *}
+{block name='frontend_index_logo_trusted_shops'}{/block}
