@@ -39,12 +39,30 @@
                 object-fit: contain;
             }
 
+            .windowad-fullscreen-slider .product--badge.badge--discount {
+                --width: 4rem;
+                --aspect-ratio: calc(96 / 153);
+                width: var(--width);
+                height: calc(var(--width) * var(--aspect-ratio));
+            }
+
+            .windowad-fullscreen-slider .product--box .product--price .price--default.is--discount {
+                --aspect-ratio: calc(60 / 58);
+                --width: 4rem;
+                width: var(--width);
+                height: calc(var(--width) * var(--aspect-ratio));
+            }
+
             .windowad-fullscreen-title > * {
                 width: fit-content;
                 margin-left: auto;
                 margin-right: auto;
                 margin-top: 1.75rem;
                 margin-bottom: 0.625rem;
+            }
+
+            .windowad-fullscreen-title picture > img {
+                width: 5rem;
             }
 
             @media (orientation: portrait) {
@@ -55,7 +73,7 @@
 
             @media (orientation: landscape) {
                 html {
-                    font-size: 2vw;
+                    font-size: 1.25vw;
                 }
             }
         </style>
@@ -70,7 +88,12 @@
                             {if $windowAd.title}
                                 <h2>{$windowAd.title}</h2>
                             {else}
-                                {include file='frontend/index/logo-container.tpl'}
+                                <picture>
+                                    <source srcset="{link file=$theme.desktopLogo}" media="(min-width: 78.75em)">
+                                    <source srcset="{link file=$theme.tabletLandscapeLogo}" media="(min-width: 64em)">
+                                    <source srcset="{link file=$theme.tabletLogo}" media="(min-width: 48em)">
+                                    <img srcset="{link file=$theme.mobileLogo}" alt="{"{config name=shopName}"|escapeHtml} - {$snippetIndexLinkDefault|escape}" />
+                                </picture>
                             {/if}
                         {/block}
                     </div>
